@@ -1,0 +1,19 @@
+# Canonical topic names — single source of truth for the whole cog_vla_ws project.
+# Every package (vla_actuation, vla_perception, vla_cognition, vla_ndn) should
+# read from this file rather than hardcoding topic strings.
+
+camera_topic: /vla/camera/image_raw
+lidar_topic: /vla/points
+odom_topic: /vla/odom
+cmd_vel_topic: /model/prius_vla/cmd_vel
+detections_topic: /vla/perception/detections
+reasoning_trace_topic: /vla/cognition/trace
+trajectory_topic: /vla/cognition/trajectory
+safety_gate_cmd_vel_topic: /vla/safety/cmd_vel
+
+# Phase 2 (perception) will add:
+# detections_topic: /vla/perception/detections
+
+# Phase 3 (cognition) will add:
+# reasoning_trace_topic: /vla/cognition/trace
+# predicted_trajectory_topic: /vla/cognition/trajectory

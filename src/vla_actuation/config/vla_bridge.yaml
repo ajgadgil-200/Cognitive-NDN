@@ -1,12 +1,12 @@
 # Mapping config for Mcity Prius VLA data highways
 - ros_topic_name: "/vla/camera/image_raw"
-  gz_topic_name: "/world/mcity_vla_world/model/prius_vla/link/front_camera/sensor/camera/image"
+  gz_topic_name: "/world/mcity_vla_world/model/prius_vla/link/chassis/sensor/front_camera_sensor/image"
   ros_type_name: "sensor_msgs/msg/Image"
   gz_type_name: "gz.msgs.Image"
   direction: GZ_TO_ROS
 
 - ros_topic_name: "/vla/points"
-  gz_topic_name: "/world/mcity_vla_world/model/prius_vla/link/lidar_link/sensor/lidar/scan/points"
+  gz_topic_name: "/world/mcity_vla_world/model/prius_vla/link/chassis/sensor/center_laser_sensor/scan/points"
   ros_type_name: "sensor_msgs/msg/PointCloud2"
   gz_type_name: "gz.msgs.PointCloudPacked"
   direction: GZ_TO_ROS

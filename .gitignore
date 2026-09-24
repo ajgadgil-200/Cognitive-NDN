@@ -1,5 +1,41 @@
+# --- Already have ---
 build/
 install/
 log/
 __pycache__/
 *.pyc
+
+# --- Editor / IDE ---
+.vscode/
+.idea/
+
+# --- Python environments and packaging ---
+venv/
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# --- Compiled C/C++ files ---
+*.o
+*.so
+
+# --- Model weights and checkpoints ---
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.bin
+
+# --- Recordings and experiment logs ---
+*.bag
+*.db3
+*.mcap
+wandb/
+runs/
+
+# --- Secrets ---
+.env
+
+# --- OS junk ---
+.DS_Store

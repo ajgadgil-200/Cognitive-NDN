@@ -40,5 +40,17 @@
       <pose>3.0 -15.0 2.5 0 0 0</pose>
     </include>
 
+    <include>
+      <name>test_bull</name>
+      <uri>https://fuel.gazebosim.org/1.0/GoogleResearch/models/Schleich_Hereford_Bull</uri>
+      <pose>8.0 -15.0 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <name>test_person</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Walking%20person</uri>
+      <pose>12.0 -15.0 0 0 0 0</pose>
+    </include>
+
   </world>
 </sdf>

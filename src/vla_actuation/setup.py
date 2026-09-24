@@ -24,6 +24,7 @@ setup(
     entry_points={
         'console_scripts': [
             'pid_controller = vla_actuation.pid_controller:main',
+            
         ],
     },
 )
