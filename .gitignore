@@ -43,3 +43,8 @@ runs/
 *.db-wal
 *.db-shm
 waymo_data/
+*.bak
+*.db
+*.db-wal
+*.db-shm
+waymo_data/
