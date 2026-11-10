@@ -1,6 +1,7 @@
 import os
 import json
 import yaml
+import torch
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Image
@@ -8,6 +9,9 @@ from std_msgs.msg import String
 from cv_bridge import CvBridge
 from ultralytics import YOLO
 from ament_index_python.packages import get_package_share_directory
+
+# Use the GPU when PyTorch can see it; otherwise fall back to CPU instead of crashing.
+DEVICE = 0 if torch.cuda.is_available() else 'cpu'
 
 
 def load_topics():
@@ -27,8 +31,11 @@ class YoloDetector(Node):
         self.bridge = CvBridge()
         self.get_logger().info('Loading YOLOv10n model...')
         self.model = YOLO(os.path.expanduser('~/yolo_test/yolov10n.pt'))
+        self.get_logger().info(f'Inference device: {DEVICE}')
 
-        self.sub = self.create_subscription(Image, camera_topic, self.callback, 10)
+        # depth=1: if inference is slower than the camera, drop old frames and
+        # always process the NEWEST one, so detections never lag behind the car.
+        self.sub = self.create_subscription(Image, camera_topic, self.callback, 1)
         self.pub = self.create_publisher(String, detections_topic, 10)
         self.get_logger().info(
             f'Subscribed to {camera_topic}, publishing detections on {detections_topic}')
@@ -36,7 +43,7 @@ class YoloDetector(Node):
 
     def callback(self, msg):
         cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
-        results = self.model(cv_image, device=0, verbose=False)
+        results = self.model(cv_image, device=DEVICE, verbose=False)
 
         detections = []
         for box in results[0].boxes:

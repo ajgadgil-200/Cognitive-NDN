@@ -38,4 +38,8 @@ runs/
 .env
 
 # --- OS junk ---
-.DS_Store
+.DS_Store*.bak
+*.db
+*.db-wal
+*.db-shm
+waymo_data/
